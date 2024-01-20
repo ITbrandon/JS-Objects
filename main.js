@@ -1,40 +1,32 @@
-const banana = {
-  name: "banana",
-  quantity: 1,
-  price: 1.95
+const houseForSale = {
+  area: 940,
+  value: 320000,
+  streetName: "Fifth Street",
+  built: "2012",
+  owner: {
+    name: "Blake",
+    age: 29
+  },
+  offers: [290000, 295000, 315000, 312000]
 }
 
-const apple = {
-  name: "apple",
-  quantity: 1,
-  price: 1.45
-}
+console.log(houseForSale);
 
-const candy = {
-  name: "candy",
-  quantity: 1,
-  price: 3.50
-}
+delete houseForSale.built;
 
-const store = {
-  storeNumber: 5,
-  locationCity: "Milan",
-  locationCountry: "Italy",
-  products: [banana, apple, candy]
-}
+houseForSale.owner.age = 30;
 
-console.log(store);
+const maxOffer = houseForSale.offers.reduce((accumulator, currentValue) => {
+  return Math.max(accumulator, currentValue);
+}, houseForSale.offers[0])
+
+console.log(maxOffer);
+
+houseForSale["Sales Price"] = 312000;
+
+console.log(houseForSale);
 
 
-for(let i = 0; i < store.products.length; i++)
-{
-  console.log(store.products[i]);
-}
 
-console.log(store.products[store.products.indexOf(candy)]);
 
-store.products[store.products.indexOf(banana)].price = 1.75
 
-console.log(store, banana);
-candy.price = 4.99;
-console.log(store, candy);
