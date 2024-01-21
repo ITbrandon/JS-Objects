@@ -1,31 +1,44 @@
-class student {
-  constructor(name, major, grades) {
-    this.name = name;
-    this.major = major;
-    this.grades = grades;
+class bookstore {
+  constructor(books) {
+    this.books = books;
   }
 
-  addGrades(grade) {
-    this.grades.push(grade);
-  }
+  listBooks() {
 
-  gpa() {
-    let sum = 0
-    for(let i = 0; i < this.grades.length; i++)
+    for(let i = 0; i < this.books.length; i++)
     {
-      sum += this.grades[i];
+      this.books[i].displayBook();
     }
 
-    let average = sum/this.grades.length;
+  }
 
-    return average;
+  addBook(newBook) {
+
+    this.books.push(newBook);
+
   }
 }
 
-const eva = new student("Eva", "Arts", [95,75,83]);
+class book {
+  constructor(name, author) {
+    this.name = name;
+    this.author = author;
+  }
 
-console.log(eva);
+  displayBook () {
+    console.log(`${this.name} by ${this.author}`);
+  }
+}
 
-eva.addGrades(90)
+const nineteen84 = new book("1984", "James Orwell");
 
-console.log(eva.gpa());
+const hp = new book("Harry Potter", "J.K Rowling");
+
+const dbz = new book("Dragon Ball Z", "Akira Toriyama");
+
+const bookStore = new bookstore([nineteen84,hp]);
+
+bookStore.addBook(dbz)
+
+bookStore.listBooks();
+
